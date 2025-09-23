@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serverless Chat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Login Screen -->
+  <div class="login-container" id="login-container">
+    <div class="login-box">
+      <h1>Login to Chat</h1>
+      <p>Enter your email to receive a magic link.</p>
+      <input type="email" id="email-input" placeholder="Your email address">
+      <button id="login-button">Send Magic Link</button>
+      <p id="auth-status"></p>
+    </div>
+  </div>
+
+  <!-- Chat Screen -->
+  <div class="chat-container hidden" id="chat-container">
+    <div class="messages" id="messages"></div>
+    <div class="input-area">
+      <label for="image-upload" class="upload-label">
+        <span class="upload-icon">🖼️</span>
+        <input type="file" id="image-upload" accept="image/*" class="hidden">
+      </label>
+      <input type="text" id="message-input" placeholder="Type a message...">
+      <button id="send-button">Send</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.ably.com/lib/ably.min-1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/magic-sdk/dist/magic.js"></script>
+  <script src="script.js"></script>
+
+</body>
+  </html>
