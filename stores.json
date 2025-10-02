@@ -1,22 +1,122 @@
 [
   {
-    "id": "s1",
+    "id": 1,
     "name": "Sneaker Deals",
     "emoji": "👟",
-    "tagline": "Weekly drops & discounts",
-    "whatsapp_url": "https://chat.whatsapp.com/example-sneakers",
-    "video_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    "tier": "pro",
-    "boosted": true
+    "tagline": "🔥 Weekly drops & discounts",
+    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "video_url": "https://www.youtube.com/embed/ScMzIvxBSi4"
   },
   {
-    "id": "s2",
+    "id": 2,
     "name": "Local Burgers",
     "emoji": "🍔",
     "tagline": "Best street burgers in town",
-    "whatsapp_url": "https://chat.whatsapp.com/example-burgers",
-    "video_url": "",
-    "tier": "free",
-    "boosted": false
+    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "video_url": ""
+  },
+  {
+    "id": 3,
+    "name": "Gadget Hub",
+    "emoji": "📱",
+    "tagline": "Latest phones & accessories",
+    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "video_url": ""
+  },
+  {
+    "id": 4,
+    "name": "Fashion Trends",
+    "emoji": "👗",
+    "tagline": "Fresh styles every week",
+    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "video_url": ""
+  },
+  {
+    "id": 5,
+    "name": "Book Corner",
+    "emoji": "📚",
+    "tagline": "Guides, ebooks & learning",
+    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "video_url": ""
+  },
+  {
+    "id": 6,
+    "name": "Farm Fresh",
+    "emoji": "🌾",
+    "tagline": "Healthy foods from the farm",
+    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "video_url": ""
+  },
+  {
+    "id": 7,
+    "name": "Beauty & Glow",
+    "emoji": "💄",
+    "tagline": "Cosmetics & skincare deals",
+    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "video_url": ""
+  },
+  {
+    "id": 8,
+    "name": "Abstract Arts",
+    "emoji": "🎨",
+    "tagline": "Unique pieces & creativity",
+    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "video_url": ""
+  },
+  {
+    "id": 9,
+    "name": "Fitness Zone",
+    "emoji": "🏋️",
+    "tagline": "Stay fit, stay strong",
+    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "video_url": ""
+  },
+  {
+    "id": 10,
+    "name": "ElectroMart",
+    "emoji": "💡",
+    "tagline": "Affordable home electronics",
+    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "video_url": ""
+  },
+  {
+    "id": 11,
+    "name": "Kitchen Queen",
+    "emoji": "🍳",
+    "tagline": "Cookware & kitchen hacks",
+    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "video_url": ""
+  },
+  {
+    "id": 12,
+    "name": "Travel Deals",
+    "emoji": "✈️",
+    "tagline": "Discover new places cheap",
+    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "video_url": ""
+  },
+  {
+    "id": 13,
+    "name": "Music Vibes",
+    "emoji": "🎶",
+    "tagline": "Fresh beats & playlists",
+    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "video_url": ""
+  },
+  {
+    "id": 14,
+    "name": "Love & Lifestyle",
+    "emoji": "❤️",
+    "tagline": "Dating, tips & good vibes",
+    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "video_url": ""
+  },
+  {
+    "id": 15,
+    "name": "Daily Deals",
+    "emoji": "🛒",
+    "tagline": "Flash sales every morning",
+    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "video_url": ""
   }
-]
+    ]
