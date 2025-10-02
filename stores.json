@@ -4,7 +4,11 @@
     "name": "Sneaker Deals",
     "emoji": "👟",
     "tagline": "🔥 Weekly drops & discounts",
-    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "links": {
+      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "Facebook": "https://facebook.com/sneakerdeals",
+      "Instagram": "https://instagram.com/sneakerdeals"
+    },
     "video_url": "https://www.youtube.com/embed/ScMzIvxBSi4"
   },
   {
@@ -12,7 +16,11 @@
     "name": "Local Burgers",
     "emoji": "🍔",
     "tagline": "Best street burgers in town",
-    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "links": {
+      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "Facebook": "https://facebook.com/localburgers",
+      "Instagram": "https://instagram.com/localburgers"
+    },
     "video_url": ""
   },
   {
@@ -20,7 +28,11 @@
     "name": "Gadget Hub",
     "emoji": "📱",
     "tagline": "Latest phones & accessories",
-    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "links": {
+      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "Facebook": "https://facebook.com/gadgethub",
+      "Instagram": "https://instagram.com/gadgethub"
+    },
     "video_url": ""
   },
   {
@@ -28,7 +40,11 @@
     "name": "Fashion Trends",
     "emoji": "👗",
     "tagline": "Fresh styles every week",
-    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "links": {
+      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "Facebook": "https://facebook.com/fashiontrends",
+      "Instagram": "https://instagram.com/fashiontrends"
+    },
     "video_url": ""
   },
   {
@@ -36,7 +52,11 @@
     "name": "Book Corner",
     "emoji": "📚",
     "tagline": "Guides, ebooks & learning",
-    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "links": {
+      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "Facebook": "https://facebook.com/bookcorner",
+      "Instagram": "https://instagram.com/bookcorner"
+    },
     "video_url": ""
   },
   {
@@ -44,7 +64,11 @@
     "name": "Farm Fresh",
     "emoji": "🌾",
     "tagline": "Healthy foods from the farm",
-    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "links": {
+      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "Facebook": "https://facebook.com/farmfresh",
+      "Instagram": "https://instagram.com/farmfresh"
+    },
     "video_url": ""
   },
   {
@@ -52,7 +76,11 @@
     "name": "Beauty & Glow",
     "emoji": "💄",
     "tagline": "Cosmetics & skincare deals",
-    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "links": {
+      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "Facebook": "https://facebook.com/beautyandglow",
+      "Instagram": "https://instagram.com/beautyandglow"
+    },
     "video_url": ""
   },
   {
@@ -60,7 +88,11 @@
     "name": "Abstract Arts",
     "emoji": "🎨",
     "tagline": "Unique pieces & creativity",
-    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "links": {
+      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "Facebook": "https://facebook.com/abstractarts",
+      "Instagram": "https://instagram.com/abstractarts"
+    },
     "video_url": ""
   },
   {
@@ -68,7 +100,11 @@
     "name": "Fitness Zone",
     "emoji": "🏋️",
     "tagline": "Stay fit, stay strong",
-    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "links": {
+      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "Facebook": "https://facebook.com/fitnesszone",
+      "Instagram": "https://instagram.com/fitnesszone"
+    },
     "video_url": ""
   },
   {
@@ -76,47 +112,11 @@
     "name": "ElectroMart",
     "emoji": "💡",
     "tagline": "Affordable home electronics",
-    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
-    "video_url": ""
-  },
-  {
-    "id": 11,
-    "name": "Kitchen Queen",
-    "emoji": "🍳",
-    "tagline": "Cookware & kitchen hacks",
-    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
-    "video_url": ""
-  },
-  {
-    "id": 12,
-    "name": "Travel Deals",
-    "emoji": "✈️",
-    "tagline": "Discover new places cheap",
-    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
-    "video_url": ""
-  },
-  {
-    "id": 13,
-    "name": "Music Vibes",
-    "emoji": "🎶",
-    "tagline": "Fresh beats & playlists",
-    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
-    "video_url": ""
-  },
-  {
-    "id": 14,
-    "name": "Love & Lifestyle",
-    "emoji": "❤️",
-    "tagline": "Dating, tips & good vibes",
-    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
-    "video_url": ""
-  },
-  {
-    "id": 15,
-    "name": "Daily Deals",
-    "emoji": "🛒",
-    "tagline": "Flash sales every morning",
-    "whatsapp_url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+    "links": {
+      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "Facebook": "https://facebook.com/electromart",
+      "Instagram": "https://instagram.com/electromart"
+    },
     "video_url": ""
   }
-    ]
+]
