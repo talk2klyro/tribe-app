@@ -4,10 +4,20 @@
     "name": "Sneaker Deals",
     "emoji": "👟",
     "tagline": "🔥 Weekly drops & discounts",
+    "category": "Fashion",
     "links": {
-      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
-      "Facebook": "https://facebook.com/sneakerdeals",
-      "Instagram": "https://instagram.com/sneakerdeals"
+      "WhatsApp": {
+        "url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+        "preview": "Join our WhatsApp group for deals!"
+      },
+      "Facebook": {
+        "url": "https://facebook.com/sneakerdeals",
+        "preview": "Follow us on Facebook for updates!"
+      },
+      "Instagram": {
+        "url": "https://instagram.com/sneakerdeals",
+        "preview": "Check our latest posts on Instagram!"
+      }
     },
     "video_url": "https://www.youtube.com/embed/ScMzIvxBSi4"
   },
@@ -16,10 +26,20 @@
     "name": "Local Burgers",
     "emoji": "🍔",
     "tagline": "Best street burgers in town",
+    "category": "Food",
     "links": {
-      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
-      "Facebook": "https://facebook.com/localburgers",
-      "Instagram": "https://instagram.com/localburgers"
+      "WhatsApp": {
+        "url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+        "preview": "Order via WhatsApp!"
+      },
+      "Facebook": {
+        "url": "https://facebook.com/localburgers",
+        "preview": "Follow for burger specials!"
+      },
+      "Instagram": {
+        "url": "https://instagram.com/localburgers",
+        "preview": "See our Instagram photos!"
+      }
     },
     "video_url": ""
   },
@@ -28,94 +48,20 @@
     "name": "Gadget Hub",
     "emoji": "📱",
     "tagline": "Latest phones & accessories",
+    "category": "Tech",
     "links": {
-      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
-      "Facebook": "https://facebook.com/gadgethub",
-      "Instagram": "https://instagram.com/gadgethub"
-    },
-    "video_url": ""
-  },
-  {
-    "id": 4,
-    "name": "Fashion Trends",
-    "emoji": "👗",
-    "tagline": "Fresh styles every week",
-    "links": {
-      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
-      "Facebook": "https://facebook.com/fashiontrends",
-      "Instagram": "https://instagram.com/fashiontrends"
-    },
-    "video_url": ""
-  },
-  {
-    "id": 5,
-    "name": "Book Corner",
-    "emoji": "📚",
-    "tagline": "Guides, ebooks & learning",
-    "links": {
-      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
-      "Facebook": "https://facebook.com/bookcorner",
-      "Instagram": "https://instagram.com/bookcorner"
-    },
-    "video_url": ""
-  },
-  {
-    "id": 6,
-    "name": "Farm Fresh",
-    "emoji": "🌾",
-    "tagline": "Healthy foods from the farm",
-    "links": {
-      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
-      "Facebook": "https://facebook.com/farmfresh",
-      "Instagram": "https://instagram.com/farmfresh"
-    },
-    "video_url": ""
-  },
-  {
-    "id": 7,
-    "name": "Beauty & Glow",
-    "emoji": "💄",
-    "tagline": "Cosmetics & skincare deals",
-    "links": {
-      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
-      "Facebook": "https://facebook.com/beautyandglow",
-      "Instagram": "https://instagram.com/beautyandglow"
-    },
-    "video_url": ""
-  },
-  {
-    "id": 8,
-    "name": "Abstract Arts",
-    "emoji": "🎨",
-    "tagline": "Unique pieces & creativity",
-    "links": {
-      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
-      "Facebook": "https://facebook.com/abstractarts",
-      "Instagram": "https://instagram.com/abstractarts"
-    },
-    "video_url": ""
-  },
-  {
-    "id": 9,
-    "name": "Fitness Zone",
-    "emoji": "🏋️",
-    "tagline": "Stay fit, stay strong",
-    "links": {
-      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
-      "Facebook": "https://facebook.com/fitnesszone",
-      "Instagram": "https://instagram.com/fitnesszone"
-    },
-    "video_url": ""
-  },
-  {
-    "id": 10,
-    "name": "ElectroMart",
-    "emoji": "💡",
-    "tagline": "Affordable home electronics",
-    "links": {
-      "WhatsApp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
-      "Facebook": "https://facebook.com/electromart",
-      "Instagram": "https://instagram.com/electromart"
+      "WhatsApp": {
+        "url": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+        "preview": "Join gadget discussions on WhatsApp!"
+      },
+      "Facebook": {
+        "url": "https://facebook.com/gadgethub",
+        "preview": "Follow Gadget Hub on Facebook"
+      },
+      "Instagram": {
+        "url": "https://instagram.com/gadgethub",
+        "preview": "Check our product photos on Instagram"
+      }
     },
     "video_url": ""
   }
