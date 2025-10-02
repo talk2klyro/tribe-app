@@ -3,113 +3,128 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MVP Marketplace</title>
+<title>MVP Marketplace Bento Layout</title>
 <style>
-  :root {
-    --primary-color: #4f46e5;
-    --primary-hover: #4338ca;
-    --bg-color: #f8f9fa;
-    --card-radius: 12px;
-    --shadow: 0 2px 6px rgba(0,0,0,0.1);
-  }
+:root {
+  --wheat: #F5E3B3;       /* 🌾 */
+  --maple: #D95D39;       /* 🍁 */
+  --fallen: #A66E42;      /* 🍂 */
+  --spider: #2B2B2B;      /* 🕷️ */
+  --dango: #F7C9D1;       /* 🍡 */
+  --champagne: #E9D8A6;   /* 🍾 */
+  --card-radius: 12px;
+  --shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
 
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: var(--bg-color);
-    color: #333;
-  }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  header {
-    background: var(--primary-color);
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
-  }
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, var(--wheat), var(--fallen));
+  color: var(--spider);
+}
 
-  header a {
-    color: yellow;
-    text-decoration: underline;
-  }
+header {
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--maple);
+  color: #fff;
+}
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-    gap: 1rem;
-    padding: 1rem;
-  }
+header a { color: var(--champagne); text-decoration: underline; }
 
-  .card {
-    background: #fff;
-    padding: 1rem;
-    border-radius: var(--card-radius);
-    box-shadow: var(--shadow);
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-auto-rows: 180px;
+  gap: 1rem;
+  padding: 1rem;
+}
 
-  .card:hover {
-    transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  }
+.card {
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  color: var(--spider);
+}
 
-  .modal {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0,0,0,0.6);
-    animation: fadeIn 0.25s ease forwards;
-    z-index: 100;
-  }
+.card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
 
-  .modal-content {
-    background: #fff;
-    padding: 2rem;
-    border-radius: var(--card-radius);
-    max-width: 500px;
-    width: 90%;
-    text-align: center;
-    position: relative;
-    animation: slideUp 0.25s ease forwards;
-  }
+/* Card sizes for Bento layout */
+.card.small { background: var(--fallen); grid-row: span 1; grid-column: span 1; }
+.card.medium { background: var(--wheat); grid-row: span 2; grid-column: span 1; }
+.card.large { background: var(--wheat); grid-row: span 2; grid-column: span 2; }
 
-  .close {
-    position: absolute;
-    top: 10px; right: 15px;
-    font-size: 1.2rem;
-    cursor: pointer;
-  }
+.card h3 { margin-bottom: 0.5rem; }
+.card p { font-size: 0.9rem; color: var(--spider); }
 
-  .btn {
-    background: var(--primary-color);
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: background 0.25s ease;
-    text-decoration: none;
-    display: inline-block;
-  }
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(43,43,43,0.8);
+  z-index: 100;
+  animation: fadeIn 0.25s ease forwards;
+}
 
-  .btn:hover {
-    background: var(--primary-hover);
-  }
+.modal-content {
+  background: var(--wheat);
+  padding: 2rem;
+  border-radius: var(--card-radius);
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  animation: slideUp 0.25s ease forwards;
+}
 
-  footer {
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-    color: #555;
-  }
+.close {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
 
-  @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-  @keyframes slideUp { from {transform: translateY(20px); opacity:0;} to {transform: translateY(0); opacity:1;} }
+.btn {
+  background: var(--maple);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: box-shadow 0.3s, transform 0.25s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  background: var(--maple);
+  box-shadow: 0 0 10px var(--champagne);
+  transform: scale(1.05);
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: var(--spider);
+}
+
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+@keyframes slideUp { from {transform: translateY(20px); opacity:0;} to {transform: translateY(0); opacity:1;} }
 </style>
 </head>
 <body>
@@ -143,17 +158,17 @@ async function loadStores() {
     const res = await fetch('stores.json');
     const stores = await res.json();
     renderStores(stores);
-  } catch (e) {
-    console.error('Error loading stores.json', e);
-  }
+  } catch (e) { console.error('Error loading stores.json', e); }
 }
 
 function renderStores(stores) {
   const grid = document.getElementById('storeGrid');
   grid.innerHTML = '';
+
   stores.forEach(store => {
     const card = document.createElement('div');
-    card.className = 'card';
+    const sizes = ['small','medium','large'];
+    card.className = `card ${sizes[Math.floor(Math.random()*sizes.length)]}`;
     card.innerHTML = `<h3>${store.emoji} ${store.name}</h3><p>${store.tagline}</p>`;
     card.addEventListener('click', () => openModal(store));
     grid.appendChild(card);
@@ -176,7 +191,6 @@ function openModal(store) {
   modal.focus();
 }
 
-// Close modal
 const modal = document.getElementById('storeModal');
 document.getElementById('closeModal').onclick = () => { modal.style.display = 'none'; };
 window.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
