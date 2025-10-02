@@ -1,41 +1,315 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Serverless Chat</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WhatsMall — Bento Marketplace (MVP)</title>
+  <style>
+    /* Simple CSS3 Bento grid + modal styling (responsive) */
+    :root{--bg:#f7fafc;--card:#fff;--muted:#6b7280;--accent:#10b981}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:#111}
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px;background:#fff;border-radius:10px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand .logo{font-size:24px}
+    .search{flex:1;margin:0 18px}
+    input[type=text]{width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:8px}
+    .btn{display:inline-block;padding:8px 12px;border-radius:8px;background:#2563eb;color:#fff;text-decoration:none}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px}
+    .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 1px 3px rgba(15,23,42,0.06);cursor:pointer;transition:transform .12s}
+    .card:hover{transform:translateY(-4px)}
+    .card .meta{display:flex;align-items:start;gap:10px}
+    .card .emoji{font-size:32px}
+    .badge{font-size:11px;padding:4px 6px;border-radius:999px;background:#fef3c7;color:#92400e}
+    .boost{border:2px solid #fce7f3}
+    .pro{box-shadow:0 6px 20px rgba(59,130,246,0.08)}
+    /* modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;padding:16px;z-index:60}
+    .modal{width:100%;max-width:900px;background:#fff;border-radius:10px;overflow:hidden}
+    .modal .content{display:grid;grid-template-columns:1fr 320px;gap:10px;padding:16px}
+    .video-placeholder{background:#111;height:240px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff}
+    .info{padding:8px}
+    .admin-panel{margin-top:18px;background:#fff;padding:12px;border-radius:10px}
+    table{width:100%;border-collapse:collapse;font-size:13px}
+    table th,table td{padding:8px;text-align:left;border-bottom:1px solid #f3f4f6}
+    footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
+    @media (max-width:720px){
+      .modal .content{grid-template-columns:1fr}
+      .video-placeholder{height:180px}
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">🏬</div>
+        <div>
+          <div style="font-weight:700">WhatsMall — Bento Marketplace</div>
+          <div style="font-size:12px;color:#6b7280">Discover stores inside WhatsApp communities</div>
+        </div>
+      </div>
 
-  <!-- Login Screen -->
-  <div class="login-container" id="login-container">
-    <div class="login-box">
-      <h1>Login to Chat</h1>
-      <p>Enter your email to receive a magic link.</p>
-      <input type="email" id="email-input" placeholder="Your email address">
-      <button id="login-button">Send Magic Link</button>
-      <p id="auth-status"></p>
-    </div>
+      <div class="search">
+        <input id="searchInput" type="text" placeholder="Search stores, emoji, tags..." />
+      </div>
+
+      <div style="display:flex;gap:8px;align-items:center">
+        <a id="becomeMerchant" class="btn" href="#" target="_blank">Become a Merchant</a>
+        <button id="adminToggle" style="padding:8px;border-radius:8px;border:1px solid #e5e7eb;background:#fff">Admin</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="gridSection">
+        <h3 style="margin-top:18px;margin-bottom:6px">Browse storefronts</h3>
+        <div id="storeGrid" class="grid"></div>
+      </section>
+
+      <section id="adminSection" class="admin-panel" style="display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <strong>Admin — Metrics & Actions</strong>
+          <div style="display:flex;gap:8px">
+            <button id="exportCSV">Export CSV</button>
+            <button id="resetBtn">Reset Demo</button>
+            <button id="addSample">+ Add Sample</button>
+          </div>
+        </div>
+        <div style="overflow:auto;max-height:240px">
+          <table id="adminTable"><thead><tr><th>Store</th><th>Tier</th><th>Boost</th><th>Views</th><th>Clicks</th><th>Joins</th><th>CTR</th><th>Actions</th></tr></thead><tbody></tbody></table>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>Built as an MVP — Bento marketplace for WhatsApp communities.</footer>
   </div>
 
-  <!-- Chat Screen -->
-  <div class="chat-container hidden" id="chat-container">
-    <div class="messages" id="messages"></div>
-    <div class="input-area">
-      <label for="image-upload" class="upload-label">
-        <span class="upload-icon">🖼️</span>
-        <input type="file" id="image-upload" accept="image/*" class="hidden">
-      </label>
-      <input type="text" id="message-input" placeholder="Type a message...">
-      <button id="send-button">Send</button>
-    </div>
-  </div>
+  <!-- Optional env.js (generated from .env) -->
+  <script src="env.js"></script>
+  <!-- Ably CDN (optional; harmless if env doesn't include ABLY key). Locking to major 2 as recommended by Ably docs. -->
+  <script src="https://cdn.ably.com/lib/ably.min-2.js"></script>
 
-  <!-- Scripts -->
-  <script src="https://cdn.ably.com/lib/ably.min-1.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/magic-sdk/dist/magic.js"></script>
-  <script src="script.js"></script>
+  <script>
+    /*
+      Main JS: vanilla implementation of the MVP
+      - loads stores.json (fallback to sample list)
+      - renders grid + modal
+      - local metrics stored in localStorage
+      - optional Ably realtime: if window.__ENV && window.__ENV.ABLY_API_KEY present, subscribes to 'mall:stores'
+    */
 
+    const METRICS_KEY = 'mvp_marketplace_metrics_v1';
+    const STORES_KEY = 'mvp_marketplace_stores_v1';
+
+    const defaultEnv = {
+      MERCHANT_FORM_URL: 'https://forms.gle/your-merchant-form-placeholder',
+      ADMIN_PASSWORD: '',
+      ABLY_API_KEY: ''
+    };
+
+    const ENV = (window.__ENV) ? Object.assign({}, defaultEnv, window.__ENV) : defaultEnv;
+
+    document.getElementById('becomeMerchant').href = ENV.MERCHANT_FORM_URL || defaultEnv.MERCHANT_FORM_URL;
+
+    // sample seeds (used if stores.json not available)
+    const SAMPLE_STORES = [
+      { id: 's1', name: 'Sneaker Deals', emoji: '👟', tagline: 'Weekly drops & discounts', whatsapp_url: 'https://chat.whatsapp.com/example-sneakers', video_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', tier: 'pro', boosted: true },
+      { id: 's2', name: 'Local Burgers', emoji: '🍔', tagline: 'Best street burgers in town', whatsapp_url: 'https://chat.whatsapp.com/example-burgers', video_url: '', tier: 'free', boosted: false },
+      { id: 's3', name: 'DJ Events', emoji: '🎶', tagline: 'Weekend lineups & guest DJs', whatsapp_url: 'https://chat.whatsapp.com/example-dj', video_url: '', tier: 'free', boosted: false },
+      { id: 's4', name: 'Tutors Hub', emoji: '📚', tagline: 'Local tutors for all ages', whatsapp_url: 'https://chat.whatsapp.com/example-tutors', video_url: 'https://www.youtube.com/watch?v=ysz5S6PUM-U', tier: 'pro', boosted: false }
+    ];
+
+    let stores = [];
+    let metrics = {};
+
+    function loadLocalMetrics(){
+      try{const raw = localStorage.getItem(METRICS_KEY);metrics = raw ? JSON.parse(raw) : {}; }catch(e){metrics={}}}
+    function saveLocalMetrics(){ localStorage.setItem(METRICS_KEY, JSON.stringify(metrics)); }
+
+    function ensureMetric(id){ if(!metrics[id]) metrics[id] = { views:0, clicks:0, joins:0 }; }
+
+    async function loadStores(){
+      // try to fetch stores.json, fall back to localStorage, then sample
+      try{
+        const resp = await fetch('stores.json');
+        if(resp.ok){ const data = await resp.json(); stores = data; localStorage.setItem(STORES_KEY, JSON.stringify(stores)); return; }
+      }catch(e){/* ignore */}
+      // check localStorage
+      const raw = localStorage.getItem(STORES_KEY);
+      if(raw){ try{stores = JSON.parse(raw); return;}catch(e){} }
+      // fallback
+      stores = SAMPLE_STORES.slice();
+      localStorage.setItem(STORES_KEY, JSON.stringify(stores));
+    }
+
+    function saveStores(){ localStorage.setItem(STORES_KEY, JSON.stringify(stores)); }
+
+    function youtubeEmbedUrl(url){
+      if(!url) return null;
+      try{ const u = new URL(url);
+        if(u.hostname.includes('youtube.com')){ const v = u.searchParams.get('v'); if(v) return `https://www.youtube.com/embed/${v}`; if(u.pathname.startsWith('/embed/')) return url; }
+        if(u.hostname === 'youtu.be'){ const id = u.pathname.slice(1); if(id) return `https://www.youtube.com/embed/${id}`; }
+      }catch(e){}
+      return url;
+    }
+
+    function renderGrid(filter=''){
+      const grid = document.getElementById('storeGrid'); grid.innerHTML='';
+      const q = filter.trim().toLowerCase();
+
+      // sort: boosted first, then pro, then name
+      const ordered = stores.slice().sort((a,b)=>{ if(a.boosted!==b.boosted) return a.boosted? -1:1; if(a.tier!==b.tier) return a.tier==='pro'? -1:1; return a.name.localeCompare(b.name) });
+
+      ordered.forEach(s=>{
+        if(q && !( (s.name+s.tagline+s.emoji).toLowerCase().includes(q) )) return;
+        const card = document.createElement('div'); card.className='card '+(s.boosted? 'boost':'')+' '+(s.tier==='pro'?'pro':'');
+        card.onclick = ()=>openModal(s.id);
+        card.innerHTML = `
+          <div class="meta">
+            <div class="emoji">${s.emoji}</div>
+            <div style="flex:1">
+              <div style="font-weight:600">${s.name}</div>
+              <div style="font-size:13px;color:${'#6b7280'}">${s.tagline}</div>
+            </div>
+            <div style="text-align:right">
+              ${s.tier==='pro'?'<div class="badge">PRO</div>':''}
+              ${s.boosted?'<div style="font-size:11px;margin-top:6px;color:#db2777">BOOST</div>':''}
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function openModal(id){
+      const store = stores.find(s=>s.id===id); if(!store) return;
+      ensureMetric(id); metrics[id].views++; saveLocalMetrics();
+
+      const backdrop = document.createElement('div'); backdrop.className='modal-backdrop'; backdrop.id='modalBackdrop';
+      const modal = document.createElement('div'); modal.className='modal';
+
+      const videoEmbed = youtubeEmbedUrl(store.video_url);
+
+      modal.innerHTML = `
+        <div style="border-bottom:1px solid #f3f4f6;padding:12px;display:flex;align-items:center;justify-content:space-between">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="font-size:28px">${store.emoji}</div>
+            <div>
+              <div style="font-weight:700">${store.name}</div>
+              <div style="font-size:13px;color:#6b7280">${store.tagline}</div>
+            </div>
+          </div>
+          <div><button id="closeModalBtn" style="padding:6px 10px;border-radius:6px">Close</button></div>
+        </div>
+        <div class="content">
+          <div>
+            ${videoEmbed ? `<iframe src="${videoEmbed}" style="width:100%;height:100%;min-height:240px;border:0;border-radius:8px" allowfullscreen></iframe>` : '<div class="video-placeholder">No video provided</div>'}
+            <div style="margin-top:10px;color:#374151">This is a demo storefront. Clicking Join will open the WhatsApp group in a new tab.</div>
+          </div>
+          <div class="info">
+            <div style="margin-bottom:8px"><strong>Contact</strong><div style="font-size:13px;color:#6b7280">Via WhatsApp group</div></div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <button id="joinBtn" style="padding:10px;border-radius:8px;background:var(--accent);color:#fff;border:0">Join WhatsApp Group</button>
+              <a href="${ENV.MERCHANT_FORM_URL}" target="_blank" style="padding:8px;border-radius:8px;border:1px solid #e5e7eb;text-align:center;display:inline-block">Want this spot? Apply</a>
+            </div>
+            <div style="margin-top:12px;font-size:13px;color:#6b7280">Metrics (demo):<div>Views: ${metrics[id]?.views||0}</div><div>Clicks: ${metrics[id]?.clicks||0}</div><div>Joins: ${metrics[id]?.joins||0}</div></div>
+          </div>
+        </div>
+      `;
+
+      backdrop.appendChild(modal); document.body.appendChild(backdrop);
+
+      document.getElementById('closeModalBtn').onclick = ()=>{ document.getElementById('modalBackdrop')?.remove(); };
+      document.getElementById('joinBtn').onclick = ()=>{ handleJoin(store.id); window.open(store.whatsapp_url,'_blank'); };
+    }
+
+    function handleJoin(id){ ensureMetric(id); metrics[id].joins++; saveLocalMetrics(); }
+
+    function handleClick(id){ ensureMetric(id); metrics[id].clicks++; saveLocalMetrics(); }
+
+    // admin actions
+    function toggleAdmin(){
+      const adm = document.getElementById('adminSection');
+      if(adm.style.display==='none'){
+        // require password if ENV.ADMIN_PASSWORD provided
+        if(ENV.ADMIN_PASSWORD){ const pw = prompt('Admin password:'); if(pw!==ENV.ADMIN_PASSWORD){ alert('Wrong password'); return; } }
+        adm.style.display='block'; renderAdminTable();
+      } else { adm.style.display='none'; }
+    }
+
+    function renderAdminTable(){
+      const tbody = document.querySelector('#adminTable tbody'); tbody.innerHTML='';
+      stores.forEach(s=>{
+        ensureMetric(s.id); const m = metrics[s.id]; const ctr = m.views>0? ((m.clicks/m.views)*100).toFixed(1)+'%':'-';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td><div style="display:flex;gap:8px;align-items:center"><div style="font-size:20px">${s.emoji}</div><div>${s.name}<div style="font-size:12px;color:#6b7280">${s.tagline}</div></div></div></td><td>${s.tier}</td><td>${s.boosted? 'yes' : 'no'}</td><td>${m.views}</td><td>${m.clicks}</td><td>${m.joins}</td><td>${ctr}</td><td><button data-id="${s.id}" class="upgradeBtn">Upgrade to Pro</button> <button data-id="${s.id}" class="boostBtn">Boost</button></td>`;
+        tbody.appendChild(tr);
+      });
+
+      document.querySelectorAll('.upgradeBtn').forEach(b=>b.onclick = (e)=>{ const id=e.target.dataset.id; stores = stores.map(s=> s.id===id? {...s, tier:'pro'}:s); saveStores(); renderGrid(document.getElementById('searchInput').value); renderAdminTable(); });
+      document.querySelectorAll('.boostBtn').forEach(b=>b.onclick = (e)=>{ const id=e.target.dataset.id; stores = stores.map(s=> s.id===id? {...s, boosted:true}:s); saveStores(); renderGrid(document.getElementById('searchInput').value); renderAdminTable(); });
+    }
+
+    // CSV export
+    function exportMetricsCSV(){
+      const rows = stores.map(s=>{
+        const m = metrics[s.id]||{views:0,clicks:0,joins:0}; return { id:s.id, name:s.name, tier:s.tier, boosted:s.boosted?'yes':'no', views:m.views, clicks:m.clicks, joins:m.joins }
+      });
+      if(!rows.length) return alert('no data');
+      const header = Object.keys(rows[0]).join(',')+'\n';
+      const body = rows.map(r=>Object.values(r).map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
+      const csv = header+body; const blob = new Blob([csv],{type:'text/csv'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='metrics.csv'; a.click(); URL.revokeObjectURL(url);
+    }
+
+    // add sample
+    function addSample(){ const newStore = { id: 's'+Date.now(), name: 'New Store '+(stores.length+1), emoji: '🛍️', tagline:'A new merchant in town', whatsapp_url:'https://chat.whatsapp.com/example-new', video_url:'', tier:'free', boosted:false }; stores.unshift(newStore); saveStores(); renderGrid(document.getElementById('searchInput').value); }
+
+    function resetDemo(){ localStorage.removeItem(STORES_KEY); localStorage.removeItem(METRICS_KEY); location.reload(); }
+
+    // Ably realtime integration (optional)
+    function initAbly(){
+      try{
+        if(!ENV.ABLY_API_KEY) return;
+        if(!window.Ably){ console.warn('Ably library not found'); return; }
+        const realtime = new Ably.Realtime({ key: ENV.ABLY_API_KEY });
+        const channel = realtime.channels.get('mall:stores');
+        channel.subscribe(msg=>{
+          try{
+            const data = msg.data; // expected: { action: 'add'|'update'|'boost', store: {...} }
+            if(data && data.action){
+              if(data.action==='add'){ stores.unshift(data.store); saveStores(); renderGrid(document.getElementById('searchInput').value); }
+              if(data.action==='update'){ stores = stores.map(s=> s.id===data.store.id? data.store: s); saveStores(); renderGrid(document.getElementById('searchInput').value); }
+              if(data.action==='boost'){ stores = stores.map(s=> s.id===data.store.id? {...s, boosted:true}: s); saveStores(); renderGrid(document.getElementById('searchInput').value); }
+              if(document.getElementById('adminSection').style.display==='block') renderAdminTable();
+            }
+          }catch(e){console.error('ably message handler error',e)}
+        });
+        console.log('Ably connected to mall:stores');
+      }catch(e){console.warn('Failed to init Ably',e)}
+    }
+
+    // init
+    (async function(){
+      loadLocalMetrics(); await loadStores(); renderGrid();
+      document.getElementById('searchInput').oninput = (e)=>renderGrid(e.target.value);
+      document.getElementById('adminToggle').onclick = toggleAdmin;
+      document.getElementById('addSample').onclick = addSample;
+      document.getElementById('resetBtn').onclick = ()=>{ if(confirm('Reset demo?')) resetDemo(); };
+      document.getElementById('exportCSV').onclick = exportMetricsCSV;
+      document.getElementById('addSample').onclick = addSample;
+
+      // quick event delegation: track clicks when card clicked
+      document.getElementById('storeGrid').addEventListener('click', (ev)=>{
+        // find nearest card element
+        let el = ev.target; while(el && !el.classList.contains('card')) el = el.parentElement; if(!el) return;
+        // optional: we already increment views on modal open. Track extra click counts if needed.
+      });
+
+      // init Ably if key present
+      try{ initAbly(); }catch(e){console.warn('Ably init error',e)}
+    })();
+
+  </script>
 </body>
-  </html>
+          </html>
