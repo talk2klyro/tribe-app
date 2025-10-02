@@ -1,4 +1,0 @@
-ably
-‎magic_admin
-‎psycopg2-binary
-‎cloudinary

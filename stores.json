@@ -1,0 +1,22 @@
+[
+  {
+    "id": "s1",
+    "name": "Sneaker Deals",
+    "emoji": "👟",
+    "tagline": "Weekly drops & discounts",
+    "whatsapp_url": "https://chat.whatsapp.com/example-sneakers",
+    "video_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "tier": "pro",
+    "boosted": true
+  },
+  {
+    "id": "s2",
+    "name": "Local Burgers",
+    "emoji": "🍔",
+    "tagline": "Best street burgers in town",
+    "whatsapp_url": "https://chat.whatsapp.com/example-burgers",
+    "video_url": "",
+    "tier": "free",
+    "boosted": false
+  }
+]
