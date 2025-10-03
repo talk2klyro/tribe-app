@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MVP Marketplace</title>
+  <style>
+    /* ---------- THEME COLORS ---------- */
+    :root {
+      --black: #111111;
+      --gold: #e0b84f;
+      --gold-light: #f3d87a;
+      --white: #ffffff;
+      --gray: #888;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--black);
+      color: var(--white);
+    }
+
+    header {
+      background: var(--black);
+      color: var(--gold);
+      padding: 1rem;
+      text-align: center;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    header p a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      background: var(--gold);
+      color: var(--black);
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    header p a:hover {
+      background: var(--gold-light);
+    }
+
+    /* ---------- GRID ---------- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .card {
+      background: #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 14px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.6);
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      border: 1px solid rgba(224,184,79,0.2);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 20px rgba(224,184,79,0.4);
+    }
+
+    .card h3 {
+      margin: 0.2rem 0;
+      color: var(--gold);
+    }
+
+    /* ---------- MODAL ---------- */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: #1c1c1c;
+      padding: 2rem;
+      border-radius: 16px;
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      border: 2px solid var(--gold);
+    }
+
+    .modal-content img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    .modal-content h2 {
+      margin: 0.5rem 0;
+      color: var(--gold);
+    }
+
+    .modal-content p {
+      color: var(--gray);
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gold);
+    }
+
+    /* ---------- BUBBLE SOCIAL BUTTONS ---------- */
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.2rem 0;
+    }
+
+    .bubble {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--black);
+      background: var(--gold);
+      text-decoration: none;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .bubble:hover {
+      transform: scale(1.15);
+      background: var(--gold-light);
+    }
+
+    /* ---------- FAN LINKS ---------- */
+    .links-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 1.5rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .link-card {
+      background: #2a2a2a;
+      color: var(--white);
+      padding: 0.6rem 1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(224,184,79,0.4);
+      transition: transform 0.25s, background 0.25s;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .link-card:hover {
+      background: var(--gold);
+      color: var(--black);
+      transform: rotate(-3deg) scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🏬 Emoji Mall Marketplace</h1>
+    <p><a href="#">Submit your store</a></p>
+  </header>
+
+  <main>
+    <div class="grid" id="storeGrid"></div>
+  </main>
+
+  <!-- Store Profile Modal -->
+  <div class="modal" id="storeModal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <img id="profilePic" src="" alt="Store Logo" />
+      <h2 id="modalTitle"></h2>
+      <p id="modalTagline"></p>
+      <p id="modalDesc"></p>
+
+      <div class="socials" id="socialButtons"></div>
+
+      <div class="links-container" id="extraLinks"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>MVP Marketplace © 2025</p>
+  </footer>
+
+  <script>
+    let stores = [];
+    let profiles = [];
+
+    async function loadData() {
+      try {
+        const storesRes = await fetch("stores.json");
+        stores = await storesRes.json();
+
+        const profilesRes = await fetch("profiles.json");
+        profiles = await profilesRes.json();
+
+        renderStores(stores);
+      } catch (err) {
+        console.error("Error loading JSON:", err);
+      }
+    }
+
+    function renderStores(stores) {
+      const grid = document.getElementById("storeGrid");
+      grid.innerHTML = "";
+      stores.forEach(store => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `<h3>${store.emoji} ${store.name}</h3><p>${store.tagline}</p>`;
+        card.addEventListener("click", () => openModal(store.id));
+        grid.appendChild(card);
+      });
+    }
+
+    function openModal(storeId) {
+      const store = stores.find(s => s.id === storeId);
+      const profile = profiles.find(p => p.store_id === storeId);
+
+      if (!store || !profile) return;
+
+      document.getElementById("modalTitle").innerText = `${store.emoji} ${store.name}`;
+      document.getElementById("modalTagline").innerText = store.tagline;
+      document.getElementById("modalDesc").innerText = profile.description || "";
+      document.getElementById("profilePic").src = profile.profile_pic || "default.png";
+
+      // Social bubbles
+      const socialDiv = document.getElementById("socialButtons");
+      socialDiv.innerHTML = "";
+      if (profile.socials) {
+        for (const [platform, url] of Object.entries(profile.socials)) {
+          if (!url) continue;
+          const bubble = document.createElement("a");
+          bubble.className = "bubble";
+          bubble.href = url;
+          bubble.target = "_blank";
+          bubble.title = platform;
+          bubble.innerHTML = platform === "whatsapp" ? "💬" :
+                             platform === "facebook" ? "📘" :
+                             platform === "instagram" ? "📸" : "🔗";
+          socialDiv.appendChild(bubble);
+        }
+      }
+
+      // Extra links (fan style)
+      const linksDiv = document.getElementById("extraLinks");
+      linksDiv.innerHTML = "";
+      if (profile.extra_links) {
+        profile.extra_links.forEach(link => {
+          const linkCard = document.createElement("a");
+          linkCard.className = "link-card";
+          linkCard.href = link.url;
+          linkCard.target = "_blank";
+          linkCard.innerText = link.title;
+          linksDiv.appendChild(linkCard);
+        });
+      }
+
+      document.getElementById("storeModal").style.display = "flex";
+    }
+
+    document.getElementById("closeModal").onclick = () => {
+      document.getElementById("storeModal").style.display = "none";
+    };
+
+    window.onclick = e => {
+      if (e.target === document.getElementById("storeModal")) {
+        document.getElementById("storeModal").style.display = "none";
+      }
+    };
+
+    loadData();
+  </script>
+</body>
+</html>￼Enter<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MVP Marketplace</title>
+  <style>
+    /* ---------- THEME COLORS ---------- */
+    :root {
+      --black: #111111;
+      --gold: #e0b84f;
+      --gold-light: #f3d87a;
+      --white: #ffffff;
+      --gray: #888;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--black);
+      color: var(--white);
+    }
+
+    header {
+      background: var(--black);
+      color: var(--gold);
+      padding: 1rem;
+      text-align: center;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    header p a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      background: var(--gold);
+      color: var(--black);
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    header p a:hover {
+      background: var(--gold-light);
+    }
+
+    /* ---------- GRID ---------- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .card {
+      background: #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 14px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.6);
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      border: 1px solid rgba(224,184,79,0.2);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 20px rgba(224,184,79,0.4);
+    }
+
+    .card h3 {
+      margin: 0.2rem 0;
+      color: var(--gold);
+    }
+
+    /* ---------- MODAL ---------- */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      justify-content: center;
+align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: #1c1c1c;
+      padding: 2rem;
+      border-radius: 16px;
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      border: 2px solid var(--gold);
+    }
+
+    .modal-content img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    .modal-content h2 {
+      margin: 0.5rem 0;
+      color: var(--gold);
+    }
+
+    .modal-content p {
+      color: var(--gray);
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gold);
+    }
+
+    /* ---------- BUBBLE SOCIAL BUTTONS ---------- */
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.2rem 0;
+    }
+
+    .bubble {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--black);
+      background: var(--gold);
+      text-decoration: none;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .bubble:hover {
+      transform: scale(1.15);
+      background: var(--gold-light);
+    }
+
+    /* ---------- FAN LINKS ---------- */
+    .links-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 1.5rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .link-card {
+      background: #2a2a2a;
+      color: var(--white);
+      padding: 0.6rem 1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(224,184,79,0.4);
+      transition: transform 0.25s, background 0.25s;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .link-card:hover {
+      background: var(--gold);
+      color: var(--black);
+      transform: rotate(-3deg) scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🏬 Emoji Mall Marketplace</h1>
+    <p><a href="#">Submit your store</a></p>
+  </header>
+
+  <main>
