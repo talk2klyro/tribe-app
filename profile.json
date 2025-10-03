@@ -1,0 +1,212 @@
+[
+  {
+    "store_id": 1,
+    "profile_pic": "images/sneaker.jpg",
+    "description": "👟 Step into confidence. The latest sneaker drops & discounts crafted to make every step a statement.",
+    "socials": {
+      "whatsapp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "facebook": "https://facebook.com/sneakerdeals",
+      "instagram": "https://instagram.com/sneakerdeals"
+    },
+    "extra_links": [
+      { "title": "🔥 Shop Weekly Drops", "url": "https://sneakerdeals.com/shop" },
+      { "title": "⭐ Exclusive Member Offers", "url": "https://sneakerdeals.com/vip" }
+    ]
+  },
+  {
+    "store_id": 2,
+    "profile_pic": "images/burgers.jpg",
+    "description": "🍔 Bite into happiness. Our street burgers bring flavor, comfort, and memories in every mouthful.",
+    "socials": {
+      "whatsapp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "facebook": "https://facebook.com/localburgers",
+      "instagram": "https://instagram.com/localburgers"
+    },
+    "extra_links": [
+      { "title": "🍟 Today’s Specials", "url": "https://localburgers.com/specials" },
+      { "title": "📍 Find Us Nearby", "url": "https://localburgers.com/location" }
+    ]
+  },
+  {
+    "store_id": 3,
+    "profile_pic": "images/gadget.jpg",
+    "description": "📱 Live smarter. From phones to accessories, we power your lifestyle with the gadgets you love.",
+    "socials": {
+      "whatsapp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "facebook": "https://facebook.com/gadgethub",
+      "instagram": "https://instagram.com/gadgethub"
+    },
+    "extra_links": [
+      { "title": "⚡ New Tech Arrivals", "url": "https://gadgethub.com/new" },
+      { "title": "💡 Smart Living Deals", "url": "https://gadgethub.com/deals" }
+    ]
+  },
+  {
+    "store_id": 4,
+    "profile_pic": "images/fashion.jpg",
+    "description": "👗 Dress to impress. Fresh styles weekly so you always look as good as you feel.",
+    "socials": {
+      "whatsapp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "facebook": "https://facebook.com/fashiontrends",
+      "instagram": "https://instagram.com/fashiontrends"
+    },
+    "extra_links": [
+      { "title": "✨ New Arrivals", "url": "https://fashiontrends.com/new" },
+      { "title": "🎁 Seasonal Collections", "url": "https://fashiontrends.com/season" }
+    ]
+  },
+  {
+    "store_id": 5,
+    "profile_pic": "images/books.jpg",
+    "description": "📚 Unlock knowledge. From guides to ebooks, empower your journey with stories that stay forever.",
+    "socials": {
+      "whatsapp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "facebook": "https://facebook.com/bookcorner",
+      "instagram": "https://instagram.com/bookcorner"
+    },
+    "extra_links": [
+      { "title": "📖 Browse Library", "url": "https://bookcorner.com/library" },
+      { "title": "🧠 Learning Paths", "url": "https://bookcorner.com/learn" }
+    ]
+  },
+  {
+    "store_id": 6,
+    "profile_pic": "images/farm.jpg",
+    "description": "🌾 Nature’s best on your plate. Farm-fresh food that nourishes your health and soul.",
+    "socials": {
+      "whatsapp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "facebook": "https://facebook.com/farmfresh",
+      "instagram": "https://instagram.com/farmfresh"
+    },
+    "extra_links": [
+      { "title": "🥦 Organic Picks", "url": "https://farmfresh.com/organic" },
+      { "title": "🚚 Weekly Deliveries", "url": "https://farmfresh.com/delivery" }
+    ]
+  },
+  {
+    "store_id": 7,
+    "profile_pic": "images/beauty.jpg",
+    "description": "💄 Confidence starts here. Skincare & cosmetics to let your natural glow shine every day.",
+    "socials": {
+      "whatsapp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "facebook": "https://facebook.com/beautyglow",
+      "instagram": "https://instagram.com/beautyglow"
+    },
+    "extra_links": [
+      { "title": "💅 Beauty Must-Haves", "url": "https://beautyglow.com/must" },
+      { "title": "🎉 Discounts & Combos", "url": "https://beautyglow.com/deals" }
+    ]
+  },
+  {
+    "store_id": 8,
+    "profile_pic": "images/art.jpg",
+    "description": "🎨 Bring walls to life. Creative art pieces that add color, depth, and emotion to your world.",
+    "socials": {
+      "whatsapp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "facebook": "https://facebook.com/abstractarts",
+      "instagram": "https://instagram.com/abstractarts"
+    },
+    "extra_links": [
+      { "title": "🖼️ Gallery", "url": "https://abstractarts.com/gallery" },
+      { "title": "🎨 Custom Orders", "url": "https://abstractarts.com/custom" }
+    ]
+  },
+  {
+    "store_id": 9,
+    "profile_pic": "images/fitness.jpg",
+    "description": "🏋️ Strength, stamina, success. Join the fitness movement that helps you look & feel unstoppable.",
+    "socials": {
+      "whatsapp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "facebook": "https://facebook.com/fitnesszone",
+      "instagram": "https://instagram.com/fitnesszone"
+    },
+    "extra_links": [
+      { "title": "💪 Workout Plans", "url": "https://fitnesszone.com/plans" },
+      { "title": "🥗 Nutrition Tips", "url": "https://fitnesszone.com/nutrition" }
+    ]
+  },
+  {
+    "store_id": 10,
+    "profile_pic": "images/electronics.jpg",
+    "description": "💡 Smarter homes start here. Affordable electronics to light up your life without the price shock.",
+    "socials": {
+      "whatsapp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "facebook": "https://facebook.com/electromart",
+      "instagram": "https://instagram.com/electromart"
+    },
+    "extra_links": [
+      { "title": "🔌 Home Essentials", "url": "https://electromart.com/essentials" },
+      { "title": "⚙️ Tech Fixes", "url": "https://electromart.com/support" }
+    ]
+  },
+  {
+    "store_id": 11,
+    "profile_pic": "images/kitchen.jpg",
+    "description": "🍳 Master your kitchen. Tools, tips, and cookware designed to make every meal a masterpiece.",
+    "socials": {
+      "whatsapp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "facebook": "https://facebook.com/kitchenqueen",
+      "instagram": "https://instagram.com/kitchenqueen"
+    },
+    "extra_links": [
+      { "title": "🍲 Cooking Hacks", "url": "https://kitchenqueen.com/hacks" },
+      { "title": "🥘 New Cookware", "url": "https://kitchenqueen.com/shop" }
+    ]
+  },
+  {
+    "store_id": 12,
+    "profile_pic": "images/travel.jpg",
+    "description": "✈️ Explore more, spend less. Discover places that enrich your soul without draining your wallet.",
+    "socials": {
+      "whatsapp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "facebook": "https://facebook.com/traveldeals",
+      "instagram": "https://instagram.com/traveldeals"
+    },
+    "extra_links": [
+      { "title": "🌍 Top Destinations", "url": "https://traveldeals.com/top" },
+      { "title": "🏝️ Weekend Getaways", "url": "https://traveldeals.com/weekend" }
+    ]
+  },
+  {
+    "store_id": 13,
+    "profile_pic": "images/music.jpg",
+    "description": "🎶 Soundtrack your life. Fresh beats & playlists designed to fuel your vibe every day.",
+    "socials": {
+      "whatsapp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "facebook": "https://facebook.com/musicvibes",
+      "instagram": "https://instagram.com/musicvibes"
+    },
+    "extra_links": [
+      { "title": "🎧 New Playlists", "url": "https://musicvibes.com/playlists" },
+      { "title": "🔥 Trending Hits", "url": "https://musicvibes.com/trending" }
+    ]
+  },
+  {
+    "store_id": 14,
+    "profile_pic": "images/lifestyle.jpg",
+    "description": "❤️ Live, love, thrive. Lifestyle tips and dating vibes that make every day feel like a win.",
+    "socials": {
+      "whatsapp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "facebook": "https://facebook.com/lovelifestyle",
+      "instagram": "https://instagram.com/lovelifestyle"
+    },
+    "extra_links": [
+      { "title": "💕 Daily Tips", "url": "https://lovelifestyle.com/tips" },
+      { "title": "🌟 Self Growth", "url": "https://lovelifestyle.com/grow" }
+    ]
+  },
+  {
+    "store_id": 15,
+    "profile_pic": "images/deals.jpg",
+    "description": "🛒 Don’t just shop — win. Daily deals that make mornings exciting & savings addictive.",
+    "socials": {
+      "whatsapp": "https://chat.whatsapp.com/IS2Gtxs4QecEbjk8CHPeIg",
+      "facebook": "https://facebook.com/dailydeals",
+      "instagram": "https://instagram.com/dailydeals"
+    },
+    "extra_links": [
+      { "title": "⚡ Flash Sales", "url": "https://dailydeals.com/flash" },
+      { "title": "🎁 Rewards Club", "url": "https://dailydeals.com/rewards" }
+    ]
+  }
+]
